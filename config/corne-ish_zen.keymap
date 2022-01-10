@@ -11,8 +11,6 @@
 #define DEFAULT 0
 #define LOWER 1
 #define RAISE 2
-#define ADJUST 3
-#define GAMING 4
 / {
         keymap {
                 compatible = "zmk,keymap";
@@ -58,44 +56,4 @@
                           	        &kp LGUI     &trans       &kp SPACE      &mt RSHIFT RET  &trans   &kp RALT
                         >;
                 };
-				
-				adjust_layer {
-                        label = "ADJUST";
-// -----------------------------------------------------------------------------------------
-// |  F1  |  F2 |  F3 |  F4 |  F5 |  F6 |   |  F7  |  F8 |  F9 | F10 | F11 | F12  |
-// | CAPS | INS | HOME| PGUP|     |     |   | LEFT | DOWN|  UP |RIGHT|     | 	  |	
-// | MENU | DEL | END | PGDN|     |     |   |      |     |     |     |     |      |
-//                    | GUI |     | SPC |   |SFTENT|     | GAME|
-                        bindings = <
-   &kp F1      &kp F2  &kp F3   &kp F4		&kp F5 	&kp F6    &kp F7   &kp F8   &kp F9 &kp F10   &kp F11 &kp F12
-   &kp CAPS    &kp INS &kp HOME &kp PG_UP 	&none  	&none     &kp LEFT &kp DOWN &kp UP &kp RIGHT &none   &none
-   &kp C_MENU  &kp DEL &kp END  &kp PG_DN 	&none  	&none     &none    &none    &none  &none     &none   &none
-								&kp LGUI 	&trans 	&kp SPACE     &mt RSHIFT RET &trans &tog GAMING
-                        >;
-                };
-				
-                gaming_layer {
-                        label = "GAMING";
-// -----------------------------------------------------------------------------------------
-// |  1  | ESC |  Q  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BKSP |
-// |  2  | CTRL|  A  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-// |  3  | SHFT|  Z  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | TAB  |
-//                   |  4  |     | SPC |   | SPC | RSE  | ALT |
-                        bindings = <
-   &kp N1   &kp ESC  	&kp Q 	&kp W 	&kp E 	&kp R    	&kp Y 	&kp U 	&kp I    &kp O   &kp P    &kp BKSP
-   &kp N2  	&kp LCTRL 	&kp A 	&kp S 	&kp D 	&kp F    	&kp H 	&kp J	&kp K    &kp L   &kp QUOT &kp ENTER
-   &kp N3 	&kp LSHFT 	&kp Z 	&kp X 	&kp C 	&kp V    	&kp N 	&kp M 	&kp CMMA &kp DOT &kp FSLH &kp RSFT
-								&kp N4 	&trans 	&kp SPC    	&kp SPC &trans 	&tog DEFAULT
-                        >;
-                };
-        };
-};
-/ {
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        tri_layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
-        };
-    };
 };
